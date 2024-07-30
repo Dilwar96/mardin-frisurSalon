@@ -1,10 +1,14 @@
 import React from "react";
-import Navbar from "../components/global/Navbar";
+import Hero from "../components/start/Hero";
+import Team from "../components/start/Team";
+import SliderKunden from "../components/start/SliderKunden";
 
 const Start = () => {
   return (
     <div>
-      <Navbar />
+      <Hero />
+      <Team />
+      <SliderKunden />
     </div>
   );
 };
