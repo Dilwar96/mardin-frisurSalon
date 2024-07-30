@@ -16,7 +16,7 @@ const Hero = () => {
           Dein perfekter Look, unser Handwerk
         </p>
         <div className="mt-10">
-          <Link to="/leistungen" className="btn btn-warning">
+          <Link to="/services" className="btn btn-warning">
             UNSERE LEISTUNGEN
           </Link>
         </div>
