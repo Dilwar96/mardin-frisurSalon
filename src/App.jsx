@@ -8,7 +8,11 @@ const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       {
-        path: "/contact",
+        index: true,
+        element: <Start />,
+      },
+      {
+        path: "contact",
         element: <Contact />,
       },
       {

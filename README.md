@@ -163,3 +163,46 @@ const Error = () => {
 
 export default Error;
 ```
+
+add NavLinks.jsx, Navbar.jsx and Footer.jsx to components\global\
+create index.js for global components
+
+- create NavLinks component
+- setup an array of links
+- iterate over and setup return
+
+```js
+import { NavLink } from "react-router-dom";
+
+const links = [
+  { id: 1, url: "/", text: "home" },
+  { id: 2, url: "services", text: "leistungen" },
+  { id: 3, url: "contact", text: "kontakt" },
+];
+
+const NavLinks = () => {
+  return (
+    <>
+      {links.map((link) => {
+        const { id, url, text } = link;
+        return (
+          <li key={id}>
+            <NavLink className="capitalize text-yellow-500 text-lg" to={url}>
+              {text}
+            </NavLink>
+          </li>
+        );
+      })}
+    </>
+  );
+};
+
+export default NavLinks;
+```
+
+- create components/Navbar.jsx
+- setup initial structure
+- use Daisy navbar component
+- "# responsive (dropdown menu on small screen, center menu on large screen)"
+- import icons from react-icons
+- render in HomeLayout.jsx
