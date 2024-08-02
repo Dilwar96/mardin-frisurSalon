@@ -548,3 +548,136 @@ const SliderKunden = () => {
 
 export default SliderKunden;
 ```
+
+- Add services folder to components.
+- Add the services.jsx to the folder, which contain the data.
+
+```js
+export const services = {
+  Damen: [
+    { id: 1, title: "", service: "Trockenschnitt", price: 1980 },
+    {
+      id: 2,
+      title: "Waschen, schneiden, föhnen",
+      service: "Kurz",
+      price: 2490,
+    },
+    { id: 3, title: "", service: "Mittel", price: 2790 },
+    { id: 4, title: "", service: "Lang", price: 3090 },
+    { id: 5, title: "Waschen, föhnen", service: "Kurz", price: 1800 },
+    { id: 6, title: "", service: "Mittel", price: 2100 },
+    { id: 7, title: "", service: "Lang", price: 2500 },
+    { id: 8, title: "", service: "Ansatzfärbung", price: 3500 },
+    { id: 9, title: "Wimpern und Augenbrauen", service: "färben", price: 790 },
+    { id: 10, title: "", service: "zupfen", price: 790 },
+    { id: 11, title: "", service: "Foliensträhnen", price: 5000 },
+    { id: 12, title: "", service: "Haubensträhnen", price: 5950 },
+    { id: 13, title: "", service: "Dauerwelle", price: 6500 },
+  ],
+
+  Herren: [
+    { id: 1, title: "", service: "Trockenschnitt", price: 1700 },
+    { id: 2, title: "", service: "Waschen, Schneiden, föhnen", price: 2200 },
+    { id: 3, title: "", service: "Bartrasur", price: 1000 },
+    {
+      id: 4,
+      title: "",
+      service: "Fadenzupfen Augenbrauen oder Wange",
+      price: 790,
+    },
+    { id: 5, title: "", service: "Enthaarung mit Wachs", price: 790 },
+  ],
+
+  KomplettpaketHerren: [
+    {
+      id: 1,
+      service: "Waschen, schneiden, föhnen, Bartrasur und Augenbrauen zupfen",
+      price: 3490,
+    },
+    {
+      id: 2,
+      service:
+        "Waschen, schneiden, föhnen, Bartrasur, Augenbrauen zupfen und enthaarung mit Wachs",
+      price: 3990,
+    },
+  ],
+
+  Kinder: { id: 1, service: "Kinderschnitt bis 10 Jahre", price: 1300 },
+};
+```
+
+- Create the ServicesCard.jsx.
+- This component is used to display a list of services with their names, descriptions, and prices.
+
+```js
+const ServicesCard = ({ services, title }) => {
+  return (
+    <div>
+      <h3 className="text-2xl font-bold mb-4 mt-4">{title}</h3>
+      <ul>
+        {services.map((item) => (
+          <li key={item.id} className="py-2 border-b border-gray-700 mt-2">
+            {item.title && (
+              <div className="flex justify-between">
+                <span className="text-lg font-semibold mt-2">{item.title}</span>
+              </div>
+            )}
+            <div className="flex justify-between">
+              <span className="w-">{item.service}</span>
+              <span>{(item.price / 100).toFixed(2)} €</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default ServicesCard;
+```
+
+- Create ServicesContainer.jsx in components/services
+- The ServicesContainer component aggregates and presents different service categories on a single page.
+- It uses the ServicesCard component to list services under each category.
+
+```js
+import ServicesCard from "./ServicesCard";
+import { services } from "./Leistungen";
+
+const ServicesContainer = () => {
+  return (
+    <div className="bg-black py-10">
+      <div className="container mx-auto px-4 text-yellow-500">
+        <h2 className="text-3xl font-bold text-center mb-8">
+          Unsere Leistungen
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <ServicesCard services={services.Damen} title="Damen" />
+          <div>
+            <ServicesCard services={services.Herren} title="Herren" />
+            <ServicesCard
+              services={services.KomplettpaketHerren}
+              title="Komplettpaket Herren"
+            />
+            <h3 className="text-2xl font-bold mb-4 mt-8">Kinder</h3>
+            <ul>
+              <li className="py-2 border-b border-gray-700">
+                <div className="flex justify-between">
+                  <span className="text-lg font-semibold">
+                    {services.Kinder.service}
+                  </span>
+                  <span className="w-13">
+                    {(services.Kinder.price / 100).toFixed(2)} €
+                  </span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ServicesContainer;
+```
