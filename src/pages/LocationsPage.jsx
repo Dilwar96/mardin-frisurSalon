@@ -1,4 +1,6 @@
 import LocationsContainer from "../components/contact/LocationsContainer";
+import Footer from "../components/global/Footer";
+import Navbar from "../components/global/Navbar";
 
 const location = {
   id: 1,
@@ -12,14 +14,18 @@ const location = {
 
 const LoactionsPage = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="container mx-auto px-4 py-12">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-12">
-          Unsere Standort
-        </h1>
-        <LocationsContainer location={location} />
+    <>
+      <Navbar />
+      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className="container mx-auto px-4 py-12">
+          <h1 className="text-3xl font-bold text-center text-gray-800 mb-12">
+            Unsere Standort
+          </h1>
+          <LocationsContainer location={location} />
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 
