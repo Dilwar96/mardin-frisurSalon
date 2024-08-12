@@ -5,8 +5,8 @@ const LocationsContainer = ({ location }) => {
   const mapLink = `https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}`;
 
   return (
-    <div className="p-6">
-      <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+    <div>
+      <div className=" overflow-hidden">
         <div className="p-6">
           <h2 className="font-semibold text-xl mb-2">
             <a
@@ -22,16 +22,15 @@ const LocationsContainer = ({ location }) => {
           <p>{location.phone}</p>
           <p>{location.hours}</p>
         </div>
+      </div>
+      <div className="">
         <MapContainer
           center={[location.lat, location.lng]}
           zoom={13}
           scrollWheelZoom={false}
-          className="h-64"
+          className="h-80"
         >
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          />
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
           <Marker position={[location.lat, location.lng]}>
             <Popup>{location.name}</Popup>
           </Marker>
