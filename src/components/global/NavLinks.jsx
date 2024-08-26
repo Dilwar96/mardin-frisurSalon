@@ -12,11 +12,16 @@ const NavLinks = () => {
       {links.map((link) => {
         const { id, url, text } = link;
         return (
-          <li key={id}>
-            <NavLink className="capitalize text-yellow-500 text-lg" to={url}>
-              {text}
-            </NavLink>
-          </li>
+          <div className="divide-y divide-gray-700">
+            <li key={id}>
+              <NavLink
+                className="block capitalize py-2 text-yellow-500 text-lg rounded"
+                to={url}
+              >
+                {text}
+              </NavLink>
+            </li>
+          </div>
         );
       })}
     </>
