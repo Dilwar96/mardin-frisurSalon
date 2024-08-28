@@ -1,7 +1,9 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import { useSelector } from "react-redux";
 
 const LocationsContainer = ({ location }) => {
+  const isOpen = useSelector((state) => state.menu.isOpen);
   const mapLink = `https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}`;
 
   return (
@@ -24,17 +26,19 @@ const LocationsContainer = ({ location }) => {
         </div>
       </div>
       <div className="">
-        <MapContainer
-          center={[location.lat, location.lng]}
-          zoom={13}
-          scrollWheelZoom={false}
-          className="h-80"
-        >
-          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          <Marker position={[location.lat, location.lng]}>
-            <Popup>{location.name}</Popup>
-          </Marker>
-        </MapContainer>
+        {!isOpen && (
+          <MapContainer
+            center={[location.lat, location.lng]}
+            zoom={13}
+            scrollWheelZoom={false}
+            className="h-80"
+          >
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            <Marker position={[location.lat, location.lng]}>
+              <Popup>{location.name}</Popup>
+            </Marker>
+          </MapContainer>
+        )}
       </div>
     </div>
   );

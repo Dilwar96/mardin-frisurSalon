@@ -1,5 +1,5 @@
-import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 const links = [
   { id: 1, url: "/", text: "home" },
@@ -7,19 +7,17 @@ const links = [
   { id: 3, url: "location", text: "standort" },
 ];
 
-const NavLinks = ({ close }) => {
-  const dispatch = useDispatch();
+const NavLinks = () => {
   return (
     <>
       {links.map((link) => {
         const { id, url, text } = link;
         return (
-          <div className="divide-y divide-gray-700">
+          <div key={uuidv4()} className="divide-y divide-gray-700">
             <li key={id}>
               <NavLink
                 className="block capitalize py-2 text-yellow-500 text-lg rounded"
                 to={url}
-                onClick={() => dispatch(close)}
               >
                 {text}
               </NavLink>

@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { useSelector, useDispatch } from "react-redux";
-import { close, toggle } from "../../features/menu/menuSlice";
+import { toggle } from "../../features/menu/menuSlice";
 import NavLinks from "./NavLinks";
 import log from "../../assets/log.png";
 import MobileMenu from "./MobileMenu"; // Neue Komponente für das mobile Menü
@@ -12,7 +12,7 @@ const Navbar = () => {
 
   const handleOpen = () => {
     document.getElementById("sidebar").classList.remove("translate-x-full");
-    setTimeout(() => dispatch(toggle()), 300);
+    setTimeout(() => dispatch(toggle()), 700);
   };
 
   return (
