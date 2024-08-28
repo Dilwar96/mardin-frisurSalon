@@ -8,13 +8,13 @@ const MobileMenu = ({ toggle }) => {
 
   const handleClose = () => {
     document.getElementById("sidebar").classList.add("translate-x-full");
-    setTimeout(() => dispatch(toggle()), 600); // Wartezeit entspricht der Animationsdauer
+    setTimeout(() => dispatch(toggle()), 300); // Wartezeit entspricht der Animationsdauer
   };
 
   return (
     <div
       id="sidebar"
-      className="fixed top-0 right-0 bottom-0 w-full bg-black shadow-md z-50 transform transition-transform duration-300 ease-in-out translate-x-0"
+      className="fixed top-0 right-0 bottom-0 w-full bg-black  z-50 transform transition-transform duration-300 ease-in-out translate-x-0"
     >
       <button
         className="absolute top-3 left-3 text-5xl text-white hover:text-gray-400"

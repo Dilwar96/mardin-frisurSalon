@@ -12,7 +12,7 @@ const Navbar = () => {
 
   const handleOpen = () => {
     document.getElementById("sidebar").classList.remove("translate-x-full");
-    setTimeout(() => dispatch(toggle()), 600);
+    setTimeout(() => dispatch(toggle()), 300);
   };
 
   return (
@@ -30,9 +30,11 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
 
-        <button id="sidebar" className="lg:hidden" onClick={handleOpen}>
-          <FaBarsStaggered className="h-6 w-6 text-yellow-500" />
-        </button>
+        <div id="sidebar">
+          <button className="lg:hidden" onClick={handleOpen}>
+            <FaBarsStaggered className="h-6 w-6 text-yellow-500" />
+          </button>
+        </div>
 
         {/* Conditional rendering of the MobileMenu component */}
         {isOpen && <MobileMenu toggle={toggle} />}
