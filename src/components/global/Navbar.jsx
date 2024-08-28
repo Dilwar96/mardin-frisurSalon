@@ -1,8 +1,7 @@
-import React from "react";
 import { NavLink } from "react-router-dom";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { useSelector, useDispatch } from "react-redux";
-import { toggle } from "../../features/menu/menuSlice";
+import { close, toggle } from "../../features/menu/menuSlice";
 import NavLinks from "./NavLinks";
 import log from "../../assets/log.png";
 import MobileMenu from "./MobileMenu"; // Neue Komponente für das mobile Menü
@@ -10,6 +9,11 @@ import MobileMenu from "./MobileMenu"; // Neue Komponente für das mobile Menü
 const Navbar = () => {
   const isOpen = useSelector((state) => state.menu.isOpen);
   const dispatch = useDispatch();
+
+  const handleOpen = () => {
+    document.getElementById("sidebar").classList.remove("translate-x-full");
+    setTimeout(() => dispatch(toggle()), 600);
+  };
 
   return (
     <nav className="bg-accent-content">
@@ -25,7 +29,8 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <button className="lg:hidden" onClick={() => dispatch(toggle())}>
+
+        <button id="sidebar" className="lg:hidden" onClick={handleOpen}>
           <FaBarsStaggered className="h-6 w-6 text-yellow-500" />
         </button>
 

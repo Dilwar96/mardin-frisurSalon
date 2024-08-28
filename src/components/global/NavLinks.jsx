@@ -1,3 +1,4 @@
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 const links = [
@@ -6,7 +7,8 @@ const links = [
   { id: 3, url: "location", text: "standort" },
 ];
 
-const NavLinks = () => {
+const NavLinks = ({ close }) => {
+  const dispatch = useDispatch();
   return (
     <>
       {links.map((link) => {
@@ -17,6 +19,7 @@ const NavLinks = () => {
               <NavLink
                 className="block capitalize py-2 text-yellow-500 text-lg rounded"
                 to={url}
+                onClick={() => dispatch(close)}
               >
                 {text}
               </NavLink>
