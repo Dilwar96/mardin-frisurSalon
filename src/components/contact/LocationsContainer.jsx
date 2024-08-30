@@ -35,7 +35,11 @@ const LocationsContainer = ({ location }) => {
           >
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
             <Marker position={[location.lat, location.lng]}>
-              <Popup>{location.name}</Popup>
+              <Popup>
+                <a href={mapLink} target="_blank" rel="noopener noreferrer">
+                  Open in Google Maps
+                </a>
+              </Popup>
             </Marker>
           </MapContainer>
         )}
