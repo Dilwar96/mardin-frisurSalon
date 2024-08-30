@@ -1,10 +1,18 @@
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { useSelector } from "react-redux";
+import icon from "../../assets/log.png";
+import L from "leaflet";
 
 const LocationsContainer = ({ location }) => {
   const isOpen = useSelector((state) => state.menu.isOpen);
   const mapLink = `https://www.google.com/maps/dir/?api=1&destination=${location.lat},${location.lng}`;
+  const customIcon = L.icon({
+    iconUrl: icon,
+    iconSize: [38, 38], // Adjust the size as needed
+    iconAnchor: [19, 38], // Adjust the anchor point as needed
+    popupAnchor: [0, -38], // Adjust the popup anchor point as needed
+  });
 
   return (
     <div>
@@ -34,7 +42,7 @@ const LocationsContainer = ({ location }) => {
             className="h-80"
           >
             <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-            <Marker position={[location.lat, location.lng]}>
+            <Marker position={[location.lat, location.lng]} icon={customIcon}>
               <Popup>
                 <a href={mapLink} target="_blank" rel="noopener noreferrer">
                   Open in Google Maps
