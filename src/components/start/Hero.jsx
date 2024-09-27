@@ -5,8 +5,6 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const carouselImages = [hero1, hero2];
-
 const Hero = () => {
   const settings = {
     dots: true,

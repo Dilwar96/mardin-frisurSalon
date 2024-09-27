@@ -25,11 +25,11 @@ const IconsContainer = () => {
 
       <div className="flex space-x-4 mt-5">
         {url.map((link) => {
-          const { id, icon, url } = link;
+          const { id, icon } = link;
           return (
             <a
               key={id}
-              href={url}
+              href="#"
               target="_blank"
               className="hover:text-gray-400 text-2xl"
             >
